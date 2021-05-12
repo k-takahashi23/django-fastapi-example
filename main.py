@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from app.application.usersService import GetUserResponse, CreateUserRequest, CreateUserResponse, UsersService
+from app.application.users.createUserUsecase import CreateUserRequest, CreateUserResponse, CreateUserUsecase
+from app.application.users.getUserUsecase import GetUserResponse, GetUserUsecase
 
 app = FastAPI()
 
@@ -9,10 +10,10 @@ async def root():
 
 @app.get("/users/{user_id}", response_model=GetUserResponse)
 async def get_user(user_id: str):
-    usersService = UsersService()
-    return await usersService.get_user(user_id)
+    usecase = GetUserUsecase()
+    return await usecase.invoke(user_id)
 
 @app.post("/users", response_model=CreateUserResponse)
 async def create_user(req: CreateUserRequest):
-    usersService = UsersService()
-    return await usersService.create_user(req)
+    usecase = CreateUserUsecase()
+    return await usecase.invoke(req)
