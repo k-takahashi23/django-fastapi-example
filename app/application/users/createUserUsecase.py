@@ -1,3 +1,4 @@
+from fastapi import Depends
 from typing import Optional
 from pydantic import BaseModel
 from ...infrastructure.repositories.usersRepository import UsersRepository
@@ -16,8 +17,8 @@ class CreateUserResponse(BaseModel):
     full_name: Optional[str] = None
 
 class CreateUserUsecase:
-    def __init__(self):
-        self.usersRepository = UsersRepository()
+    def __init__(self, usersRepository: UsersRepository = Depends()):
+        self.usersRepository = usersRepository
 
     async def invoke(self, req: CreateUserRequest):
         user = User("id", req.user_name, req.email)
