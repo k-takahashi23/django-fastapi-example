@@ -6,7 +6,7 @@ COPY requirements.txt src
 # COPY app src/app
 COPY main.py src
 
-WORKDIR src
+WORKDIR /src
 RUN pip install -r requirements.txt
 
 EXPOSE 8081
