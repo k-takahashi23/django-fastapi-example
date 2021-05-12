@@ -15,6 +15,14 @@ $ pip install -r requirements.txt
 
 ## How to run
 
+### Use docker
+
+```bash
+$ docker-compose up
+```
+
+### Use local env
+
 ```bash
 $ uvicorn main:app --reload
 ```
