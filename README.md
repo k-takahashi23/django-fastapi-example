@@ -1,4 +1,4 @@
-# django-fastapi-example
+# fastapi-example
 
 
 ## Requirements
