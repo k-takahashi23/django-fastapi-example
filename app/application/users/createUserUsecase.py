@@ -7,24 +7,19 @@ from ...domain.entities.user import User
 class CreateUserRequest(BaseModel):
     user_name: str
     password: str
-    email: str
-    full_name: Optional[str] = None
+    email: Optional[str] = None
 
 class CreateUserResponse(BaseModel):
     user_id: str
     user_name: str
-    email: str
-    full_name: Optional[str] = None
+    email: Optional[str] = None
 
 class CreateUserUsecase:
     def __init__(self, usersRepository: UsersRepository = Depends()):
         self.usersRepository = usersRepository
 
     async def invoke(self, req: CreateUserRequest):
-        user = User("id", req.user_name, req.email)
+        user_id = "id"
+        user = User(user_id, req.user_name, req.email)
         await self.usersRepository.addAsync(user)
-        return {
-            "user_id": user.user_id,
-            "user_name": user.user_name,
-            "email": user.email,
-        }
+        return user.__dict__
