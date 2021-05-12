@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
-from app.application.users.createUserUsecase import CreateUserRequest, CreateUserResponse, CreateUserUsecase
-from app.application.users.getUserUsecase import GetUserRequest, GetUserResponse, GetUserUsecase
+from app.application.usecases.users.createUserUsecase import CreateUserRequest, CreateUserResponse, CreateUserUsecase
+from app.application.usecases.users.getUserUsecase import GetUserRequest, GetUserResponse, GetUserUsecase
 
 usersRouter = APIRouter()
 

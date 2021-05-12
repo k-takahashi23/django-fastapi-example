@@ -1,8 +1,8 @@
 from fastapi import Depends
 from typing import Optional
 from pydantic import BaseModel
-from ...infrastructure.repositories.usersRepository import UsersRepository
-from ...domain.entities.user import User
+from ....infrastructure.repositories.usersRepository import UsersRepository
+from ....domain.entities.user import User
 
 class GetUserRequest(BaseModel):
     user_id: str

@@ -2,8 +2,8 @@ from fastapi import Depends
 from typing import Optional
 from pydantic import BaseModel
 import uuid
-from ...infrastructure.repositories.usersRepository import UsersRepository
-from ...domain.entities.user import User
+from ....infrastructure.repositories.usersRepository import UsersRepository
+from ....domain.entities.user import User
 
 class CreateUserRequest(BaseModel):
     user_name: str
