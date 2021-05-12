@@ -26,3 +26,7 @@ $ docker-compose up
 ```bash
 $ uvicorn main:app --reload
 ```
+
+### API Documents
+
+`http://localhost:8080/docs`

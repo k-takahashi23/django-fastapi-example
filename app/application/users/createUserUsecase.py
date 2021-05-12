@@ -15,7 +15,6 @@ class CreateUserResponse(BaseModel):
     email: str
     full_name: Optional[str] = None
 
-
 class CreateUserUsecase:
     def __init__(self):
         self.usersRepository = UsersRepository()
