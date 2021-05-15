@@ -10,11 +10,6 @@ class CreateUserRequest(BaseModel):
     password: str
     email: Optional[str] = None
 
-class CreateUserResponse(BaseModel):
-    user_id: str
-    user_name: str
-    email: Optional[str] = None
-
 class CreateUserUsecase:
     def __init__(self, usersRepository: UsersRepository = Depends()):
         self.usersRepository = usersRepository
