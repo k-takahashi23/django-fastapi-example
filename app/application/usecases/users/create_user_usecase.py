@@ -1,6 +1,6 @@
 from app.application.usecases.users.user import User
 from app.domain.entities.user import User as DomainModelUser
-from app.infrastructure.repositories.usersRepository import UsersRepository
+from app.infrastructure.repositories.users_repository import UsersRepository
 from fastapi import Depends
 from typing import Optional
 from pydantic import BaseModel

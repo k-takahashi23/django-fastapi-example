@@ -1,6 +1,6 @@
-from app.application.usecases.users.createUserUsecase import CreateUserRequest, CreateUserUsecase
-from app.application.usecases.users.findAllUsersUsecase import FindAllUsersUsecase
-from app.application.usecases.users.findUserUsecase import FindUserRequest, FindUserUsecase
+from app.application.usecases.users.create_user_usecase import CreateUserRequest, CreateUserUsecase
+from app.application.usecases.users.find_all_users_usecase import FindAllUsersUsecase
+from app.application.usecases.users.find_user_usecase import FindUserRequest, FindUserUsecase
 from app.application.usecases.users.user import User
 from typing import List
 from fastapi import APIRouter, Depends

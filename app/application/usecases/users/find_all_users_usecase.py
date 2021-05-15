@@ -1,5 +1,5 @@
 from app.application.usecases.users.user import User
-from app.infrastructure.repositories.usersRepository import UsersRepository
+from app.infrastructure.repositories.users_repository import UsersRepository
 from fastapi import Depends
 
 class FindAllUsersUsecase:
