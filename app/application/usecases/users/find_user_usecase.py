@@ -6,9 +6,9 @@ class FindUserRequest(BaseModel):
     user_id: str
 
 class FindUserUsecase:
-    def __init__(self, usersRepository: UsersRepository = Depends()):
-        self.usersRepository = usersRepository
+    def __init__(self, users_repository: UsersRepository = Depends()):
+        self.users_repository = users_repository
 
     async def invoke(self, req: FindUserRequest):
-        user = await self.usersRepository.findAsync(req.user_id)
+        user = await self.users_repository.find_async(req.user_id)
         return user
