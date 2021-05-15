@@ -6,13 +6,13 @@ class UsersRepository:
 
   async def findAllAsync(self) -> list[User]:
     mockUsers = [
-      User("id1", "TanakaTaro", "tanaka1@mail.com"),
-      User("id2", "TanakaJiro", "tanaka2@mail.com")
+      User(**{ "user_id": "id1", "user_name": "TanakaTaro", "email": "tanaka1@mail.com" }),
+      User(**{ "user_id": "id2", "user_name": "TanakaJiro", "email": "tanaka2@mail.com" })
     ]
     return mockUsers
 
   async def findAsync(self, id: str) -> User:
-    mockUser = User(id, "TanakaTaro", "tanaka@mail.com")
+    mockUser = User(**{ "user_id": id, "user_name": "TanakaTaro", "email": "tanaka1@mail.com" })
     return mockUser
 
   async def addAsync(self, user: User) -> bool:

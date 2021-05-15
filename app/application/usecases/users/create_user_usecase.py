@@ -1,5 +1,4 @@
-from app.application.usecases.users.user import User
-from app.domain.entities.user import User as DomainModelUser
+from app.domain.entities.user import User
 from app.infrastructure.repositories.users_repository import UsersRepository
 from fastapi import Depends
 from typing import Optional
@@ -17,6 +16,6 @@ class CreateUserUsecase:
 
     async def invoke(self, req: CreateUserRequest):
         user_id = str(uuid.uuid4())
-        user = DomainModelUser(user_id, req.user_name, req.email)
+        user = User(**{ "user_id": user_id, "user_name": req.user_name, "email": req.email })
         await self.usersRepository.addAsync(user)
-        return User.from_domain_model(user)
+        return user

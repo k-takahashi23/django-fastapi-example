@@ -1,4 +1,3 @@
-from app.application.usecases.users.user import User
 from app.infrastructure.repositories.users_repository import UsersRepository
 from fastapi import Depends
 from pydantic import BaseModel
@@ -12,4 +11,4 @@ class FindUserUsecase:
 
     async def invoke(self, req: FindUserRequest):
         user = await self.usersRepository.findAsync(req.user_id)
-        return User.from_domain_model(user)
+        return user
