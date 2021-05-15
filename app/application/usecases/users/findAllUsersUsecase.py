@@ -1,5 +1,6 @@
+from app.application.usecases.users.user import User
+from app.infrastructure.repositories.usersRepository import UsersRepository
 from fastapi import Depends
-from ....infrastructure.repositories.usersRepository import UsersRepository
 
 class FindAllUsersUsecase:
     def __init__(self, usersRepository: UsersRepository = Depends()):
@@ -7,4 +8,4 @@ class FindAllUsersUsecase:
 
     async def invoke(self):
         users = await self.usersRepository.findAllAsync()
-        return [user.__dict__ for user in users]
+        return [User.from_domain_model(user) for user in users]

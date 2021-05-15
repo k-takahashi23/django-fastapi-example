@@ -1,4 +1,4 @@
-from ...domain.entities.user import User
+from app.domain.entities.user import User
 
 class UsersRepository:
   def __init__(self):

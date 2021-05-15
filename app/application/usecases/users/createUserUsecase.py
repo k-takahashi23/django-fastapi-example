@@ -1,9 +1,10 @@
+from app.application.usecases.users.user import User
+from app.domain.entities.user import User as DomainModelUser
+from app.infrastructure.repositories.usersRepository import UsersRepository
 from fastapi import Depends
 from typing import Optional
 from pydantic import BaseModel
 import uuid
-from ....infrastructure.repositories.usersRepository import UsersRepository
-from ....domain.entities.user import User
 
 class CreateUserRequest(BaseModel):
     user_name: str
@@ -16,6 +17,6 @@ class CreateUserUsecase:
 
     async def invoke(self, req: CreateUserRequest):
         user_id = str(uuid.uuid4())
-        user = User(user_id, req.user_name, req.email)
+        user = DomainModelUser(user_id, req.user_name, req.email)
         await self.usersRepository.addAsync(user)
-        return user.__dict__
+        return User.from_domain_model(user)
