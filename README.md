@@ -30,3 +30,22 @@ $ uvicorn main:app --reload
 ### API Documents
 
 `http://localhost:8080/docs`
+
+## Linter
+
+```bash
+$ pip install flake8
+$ pip install autopep8
+```
+
+### Check
+
+```bash
+$ flake8 .
+```
+
+### Apply
+
+```bash
+$ autopep8 --in-place --aggressive --aggressive {file_name}.py  
+```

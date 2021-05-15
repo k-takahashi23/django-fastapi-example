@@ -7,14 +7,17 @@ from fastapi import APIRouter, Depends
 
 users_router = APIRouter()
 
+
 @users_router.get("", response_model=List[User])
-async def find_user(usecase: FindAllUsersUsecase = Depends()):
+async def find_all_users(usecase: FindAllUsersUsecase = Depends()):
     return await usecase.invoke()
+
 
 @users_router.get("/{user_id}", response_model=User)
 async def find_user(user_id: str, usecase: FindUserUsecase = Depends()):
     req = FindUserRequest(user_id=user_id)
     return await usecase.invoke(req)
+
 
 @users_router.post("", response_model=User)
 async def create_user(req: CreateUserRequest, usecase: CreateUserUsecase = Depends()):
