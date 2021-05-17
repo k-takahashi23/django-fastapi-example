@@ -21,3 +21,7 @@ class UsersRepository:
     async def add_async(self, user: User) -> bool:
         print('add user OK!')
         return True
+    
+    async def delete_async(self, user_id: str):
+        print('delete user OK!')
+        return
