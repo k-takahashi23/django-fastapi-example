@@ -2,6 +2,7 @@ from app.application.usecases.users.create_user_usecase import CreateUserRequest
 from app.application.usecases.users.delete_user_usecase import DeleteUserRequest, DeleteUserUsecase
 from app.application.usecases.users.find_all_users_usecase import FindAllUsersUsecase
 from app.application.usecases.users.find_user_usecase import FindUserRequest, FindUserUsecase
+from app.application.usecases.users.update_user_usecase import UpdateUserRequest, UpdateUserUsecase
 from app.domain.entities.user import User
 from typing import List
 from fastapi import APIRouter, Depends
@@ -22,6 +23,11 @@ async def find_user(user_id: str, usecase: FindUserUsecase = Depends()):
 
 @users_router.post("", response_model=User)
 async def create_user(req: CreateUserRequest, usecase: CreateUserUsecase = Depends()):
+    return await usecase.invoke(req)
+
+@users_router.patch("/{user_id}", response_model=User)
+async def update_user(user_id: str, req: UpdateUserRequest, usecase: UpdateUserUsecase = Depends()):
+    req.user_id = user_id
     return await usecase.invoke(req)
 
 @users_router.delete("/{user_id}", status_code=204)
