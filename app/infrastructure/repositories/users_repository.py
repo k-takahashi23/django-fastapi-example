@@ -53,7 +53,7 @@ class UsersRepository:
             "email": dto.email
         })
         return user
-    
+
     async def delete_async(self, user_id: str) -> None:
         print('delete user OK!')
         print(user_id)

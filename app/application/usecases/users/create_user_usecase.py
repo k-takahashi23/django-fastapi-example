@@ -17,7 +17,7 @@ class CreateUserUsecase:
     async def invoke(self, req: CreateUserRequest):
         addUserDTO = AddUserDTO(
             **{
-                "password": req.password, 
+                "password": req.password,
                 "user_name": req.user_name,
                 "email": req.email,
             }

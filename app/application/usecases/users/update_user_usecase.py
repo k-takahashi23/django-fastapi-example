@@ -3,6 +3,7 @@ from fastapi import Depends
 from typing import Optional
 from pydantic import BaseModel
 
+
 class UpdateUserRequest(BaseModel):
     user_id: Optional[str] = None
     user_name: Optional[str] = None
@@ -16,7 +17,7 @@ class UpdateUserUsecase:
     async def invoke(self, req: UpdateUserRequest):
         updateUserDTO = UpdateUserDTO(
             **{
-                "user_id": req.user_id, 
+                "user_id": req.user_id,
                 "user_name": req.user_name,
                 "email": req.email,
             }

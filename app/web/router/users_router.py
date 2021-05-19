@@ -25,10 +25,12 @@ async def find_user(user_id: str, usecase: FindUserUsecase = Depends()) -> User:
 async def create_user(req: CreateUserRequest, usecase: CreateUserUsecase = Depends()) -> User:
     return await usecase.invoke(req)
 
+
 @users_router.patch("/{user_id}", response_model=User, status_code=201)
 async def update_user(user_id: str, req: UpdateUserRequest, usecase: UpdateUserUsecase = Depends()) -> User:
     req.user_id = user_id
     return await usecase.invoke(req)
+
 
 @users_router.delete("/{user_id}", status_code=204)
 async def delete_user(user_id: str, usecase: DeleteUserUsecase = Depends()) -> None:
