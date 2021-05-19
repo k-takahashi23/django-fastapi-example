@@ -1,8 +1,16 @@
 from typing import Optional
+import uuid
 from pydantic import BaseModel
 from app.domain.entities.user import User
 
-class UserUpdateDTO(BaseModel):
+
+class AddUserDTO(BaseModel):
+    user_name: str
+    password: str
+    email: Optional[str] = None
+
+
+class UpdateUserDTO(BaseModel):
     user_id: Optional[str] = None
     user_name: Optional[str] = None
     email: Optional[str] = None
@@ -25,17 +33,28 @@ class UsersRepository:
                             "email": "tanaka1@mail.com"})
         return mock_user
 
-    async def add_async(self, user: User):
+    async def add_async(self, dto: AddUserDTO) -> User:
         print('add user OK!')
-        print(user)
-        return True
+        user_id = str(uuid.uuid4())
+        print(user_id, dto)
+        user = User(**{
+            "user_id": user_id,
+            "user_name": dto.user_name,
+            "email": dto.email
+        })
+        return user
 
-    async def update_async(self, dto: UserUpdateDTO):
+    async def update_async(self, dto: UpdateUserDTO) -> User:
         print('update user OK!')
         print(dto)
-        return True
+        user = User(**{
+            "user_id": dto.user_id,
+            "user_name": dto.user_name,
+            "email": dto.email
+        })
+        return user
     
-    async def delete_async(self, user_id: str):
+    async def delete_async(self, user_id: str) -> None:
         print('delete user OK!')
         print(user_id)
         return

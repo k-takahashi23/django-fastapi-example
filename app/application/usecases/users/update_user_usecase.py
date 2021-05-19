@@ -1,5 +1,4 @@
-from app.domain.entities.user import User
-from app.infrastructure.repositories.users_repository import UserUpdateDTO, UsersRepository
+from app.infrastructure.repositories.users_repository import UpdateUserDTO, UsersRepository
 from fastapi import Depends
 from typing import Optional
 from pydantic import BaseModel
@@ -15,12 +14,12 @@ class UpdateUserUsecase:
         self.users_repository = users_repository
 
     async def invoke(self, req: UpdateUserRequest):
-        userUpdateDTO = UserUpdateDTO(
+        updateUserDTO = UpdateUserDTO(
             **{
                 "user_id": req.user_id, 
                 "user_name": req.user_name,
                 "email": req.email,
             }
         )
-        await self.users_repository.update_async(userUpdateDTO)
-        return
+        updatedUser = await self.users_repository.update_async(updateUserDTO)
+        return updatedUser
