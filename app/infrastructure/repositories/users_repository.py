@@ -28,9 +28,11 @@ class UsersRepository:
         return mock_users
 
     async def find_async(self, id: str) -> User:
-        mock_user = User(**{"user_id": id,
-                            "user_name": "TanakaTaro",
-                            "email": "tanaka1@mail.com"})
+        mock_user = User(**{
+            "user_id": id,
+            "user_name": "TanakaTaro",
+            "email": "tanaka1@mail.com"
+        })
         return mock_user
 
     async def add_async(self, dto: AddUserDTO) -> User:
