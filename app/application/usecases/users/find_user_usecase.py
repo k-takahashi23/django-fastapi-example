@@ -13,4 +13,4 @@ class FindUserUsecase:
 
     async def invoke(self, req: FindUserRequest):
         user = await self.users_repository.find_async(req.user_id)
-        return user
+        return user;
